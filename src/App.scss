@@ -1,0 +1,197 @@
+@use 'colors' as *;
+
+#desktop {
+  background-color: $color-purple;
+  height: 100vh;
+  width: 100vw;
+}
+
+@mixin border-solid {
+  border: solid $color-almost-black;
+}
+
+@mixin border-solid-bottom {
+  border-bottom: solid $color-almost-black;
+}
+
+@mixin border-solid-top {
+  border-top: solid $color-almost-black;
+}
+
+@mixin border-solid-left {
+  border-left: solid $color-almost-black;
+}
+
+@mixin border-solid-right {
+  border-right: solid $color-almost-black;
+}
+
+@mixin center-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  &-screen {
+    background-color: $color-pink;
+    display: flex;
+    height: auto;
+    @include border-solid-bottom();
+
+    .app-version {
+      width: 100%;
+      padding-right: 1rem;
+      @include center-flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &-option {
+    background-color: $color-pink;
+    padding: 0.25rem 1rem;
+
+    &:hover {
+      filter: invert(1);
+    }
+  }
+
+  &-sub {
+    position: absolute;
+    @include border-solid;
+  }
+}
+
+.window {
+  &-frame {
+    box-sizing: border-box;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-shrink: 0;
+
+    width: fit-content;
+    height: fit-content;
+
+    @include border-solid;
+    background-color: $color-purple;
+  }
+
+  &-top {
+    box-sizing: border-box;
+
+    display: flex;    
+    justify-content: space-between;
+    flex-shrink: 0;
+
+    height: 1.5rem;
+
+    @include border-solid-bottom();
+    background-color: $color-pink;
+
+    span {
+      @include center-flex;
+    }
+
+    span:first-child {
+      width: 1.5rem;
+
+      @include border-solid-right();
+
+      span {
+        border: none;
+        transform: rotate(-180deg);
+      }
+    }
+
+    span.title {
+      width: calc(100% - 3.4rem);
+    }
+
+    span:last-child {
+      box-sizing: border-box;
+      
+      @include border-solid-left();
+      
+      width: 1.5rem;
+    }
+  }
+
+  &-corner {
+    box-sizing: border-box;
+
+    @include border-solid-left();
+    @include border-solid-bottom();
+    
+    height: 1.5rem;
+    width: 1.5rem;
+    
+    background-color: $color-pink;
+    
+    justify-self: flex-end;
+  }
+
+  &-middle {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+
+    width: fit-content;
+  }
+  
+  &-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+
+    min-height: 18rem;
+    min-width: 20rem;
+
+    width: max-content;
+    max-width: 52rem;
+
+    background-color: $color-purple;
+  }
+
+  &-right {
+    box-sizing: border-box;
+
+    @include border-solid-left();
+    
+    width: 1.5rem;
+    
+    background-color: $color-pink;
+  }
+
+  &-bottom {
+    box-sizing: border-box;
+
+    @include border-solid-top();
+    
+    height: 1.5rem;
+    
+    background-color: $color-pink;
+  }
+}
+
+.full-size {
+  top: 0;
+  left: 0;
+  width: calc(100vw - 6px);
+  height: calc(100vh - 32px);
+}
+
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.error {
+  background: $color-almost-black;
+  color: red;
+}

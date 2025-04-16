@@ -1,0 +1,31 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  // background-color: #242424;
+  background-color: #CCCCCC;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  user-select: none;
+  overflow-y: hidden;
+
+  font-family: 'amiga4ever', sans-serif;
+  
+  color: #1a1a1a;;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'amiga4ever';
+  src: url(../src/assets/fonts/amiga4ever.ttf) format('truetype');
+}

@@ -1,0 +1,20 @@
+:root {
+    --color-pink: #FF6763;
+    --color-purple: #646cff;
+    --color-dark-purple: #7B7DAA;
+    --color-almost-black: #222222;
+    --color-green: #63FF96;
+    --color-yellow: #FFE063;
+    --color-turquoise: #00989c;
+    --color-white: #dbdbdb;
+  }
+  
+  // For compatibility
+  $color-pink: var(--color-pink);
+  $color-purple: var(--color-purple);
+  $color-dark-purple: var(--color-dark-purple);
+  $color-almost-black: var(--color-almost-black);
+  $color-green: var(--color-green);
+  $color-yellow: var(--color-yellow);
+  $color-turquoise: var(--color-turquoise);
+  $color-white: var(--color-white);
