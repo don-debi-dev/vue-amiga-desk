@@ -22,22 +22,15 @@
 
     <div :class="['window-middle']">
       <div :class="['window-content', output.isHovered ? 'shadow' : '']" ref="target">
-        <!-- <component v-for="(comp, index) in props.content" :is="comp" :key="index" /> -->
         <component v-for="({component, cprops}, iidx) in props.content"
           :is="component"
-          :title="`${cprops.title}-${index}`"
-          :id="cprops.id"
+          :title="`${cprops?.title || uniqueNumber()}-${iidx}`"
+          :id="cprops?.id || uniqueNumber()"
           :zi="zi"
           :index="iidx"
-          :key="`in-window-${id}-${cprops.id}`"
+          :key="`in-window-${id}-${cprops?.id || uniqueNumber()}`"
           :inWindow="true"
         />
-        <!-- <component
-        v-for="(entry, i) in props.content"
-        :is="entry.component"
-        v-bind="entry.props"
-        :key="entry.props.id"
-        /> -->
       </div>
       <div :class="['window-right', max ? 'hide' : '']" :style="{ zIndex: zi }"></div>
     </div>
@@ -52,21 +45,17 @@
 <script setup lang="ts">
 
 import { computed, CSSProperties, defineProps, ref, watch } from 'vue';
-import { upCount } from '@/utils/Utils';
+import { uniqueNumber, upCount } from '@/utils/Utils';
 import { useWindowStore } from '@/store';
-import { UIComponents, Window } from '@/types';
+import { Window } from '@/types';
 import { useDraggable, useDropTarget } from '@/composables';
 import { eventBus } from '@/bus/eventBus';
-
-import IconComponent from './IconComponent.vue';
 
 const { dropped, output, target } = useDropTarget();
 
 const props = defineProps<Window & {
   index: number
 }>();
-
-console.log(props);
 
 const title = computed(() => props.title ?? '');
 
@@ -121,6 +110,12 @@ watch(active, (nu) => {
   if (nu) updateZi();
 });
 
+const prp = computed(() => props.content);
+
+watch(prp, (nu) => {
+  // console.log(prp);
+});
+
 // Inject earlier as with optionclicked?
 watch(dropped, (nu) => {
   if (nu?.id) eventBus.emit('iconDropped', { droppedId: nu.id, recievedId: id.value })
@@ -160,6 +155,6 @@ const windowStyle = computed<CSSProperties>(() => {
 }
 
 .shadow {
-  background-color: var(--color-white);
+  background-color: wheat;
 }
 </style>

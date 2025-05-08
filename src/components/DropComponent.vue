@@ -98,7 +98,8 @@
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 @use '@/colors.scss' as *;
 
 .drop-wrapper {

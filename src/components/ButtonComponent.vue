@@ -1,5 +1,9 @@
 <template>
-    <input type="button" :value="props.text" @click="action" :disabled="props.disabled" :class="[props.className]">
+    <input type="button" 
+      :value="props.text" 
+      :disabled="props.disabled" 
+      :class="[props.className]"
+      @click="action">
 </template>
   
 <script setup lang="ts">
@@ -25,11 +29,14 @@ const action = (e: Event) => {
 
 input[type="button"] {
   font-family: 'amiga4ever', sans-serif;
-  background-color: var(--color-pink);
-  padding: 0.25rem 1rem;
+  background-color: var(--color-white);
+  padding: 0.5rem;
+
+  @include border-solid;
 }
 
-:active {
-  filter: invert(1);
+input[type="button"]:active {
+  background-color: var(--color-pink);
 }
+
 </style>
